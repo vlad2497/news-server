@@ -19,8 +19,6 @@ class LoginController extends Controller
             'username' => $request->email,
             'password' => $request->password,
         ]);
-        
-        dd($request);
 
         return app()->handle($request);
     }

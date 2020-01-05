@@ -11,13 +11,6 @@
 |
 */
 
-use Illuminate\Support\Facades\DB;
-
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/testRoute', function () {
-    $users = DB::table('users')->get();
-    return $users;
 });
