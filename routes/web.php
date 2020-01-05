@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/testRoute', function () {
-    return "testRoute";
+    $DATABASE_URL = parse_url(getenv("DATABASE_URL"));
+    return $DATABASE_URL;
 });
