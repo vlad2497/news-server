@@ -11,6 +11,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, $this->rules(), $this->validationErrorMessages());
+        
+        dd('it is test');
 
         $request = Request::create(config('app.url').'/oauth/token', 'POST', [
             'grant_type' => 'password',
