@@ -1,10 +1,10 @@
 <template>
-    <div>CompTest component</div>
+    <div><router-view></router-view></div>
 </template>
 
 <script>
     export default {
-        name: "CompTest"
+        name: "TheMain"
     }
 </script>
 

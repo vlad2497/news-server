@@ -1,0 +1,9 @@
+.filter-wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+}

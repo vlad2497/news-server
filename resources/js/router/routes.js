@@ -1,9 +1,13 @@
-import CompTest from '../components/common/CompTest';
+import homeRoutes from './home';
+import scienceRoutes from './science';
+import businessRoutes from './business';
+import authRoutes from './auth';
+import notFound from './not-found';
 
 export default [
-    {
-        path: '/comptest',
-        name: 'comp-test',
-        component: CompTest
-    }
+    ...homeRoutes,
+    ...scienceRoutes,
+    ...businessRoutes,
+    ...authRoutes,
+    ...notFound
 ];

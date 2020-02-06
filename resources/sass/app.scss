@@ -1,8 +1,24 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Layouts
+@import './layouts/header';
+@import './layouts/footer';
+
+// Common
+@import './common/news-block';
+@import './common/filters';
+@import './common/search';
+@import './common/select';
+@import './common/pagination';
+@import './common/forms';
+@import './common/input';
+
+// Pages
+@import './pages/home';
