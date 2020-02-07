@@ -2,10 +2,10 @@ export const login = (email, password) =>
     axios.post("/api/login", {'email': email, 'password': password});
 
 export const getUser = () =>
-    axios.get("http://news-server/api/user");
+    axios.get("/api/user");
 
 export const logout = () =>
-    axios.post("http://news-server/api/logout");
+    axios.post("/api/logout");
 
 export const refresh = () => {
     const refresh_token = localStorage.getItem("refresh_token");

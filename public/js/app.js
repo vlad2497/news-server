@@ -57160,10 +57160,10 @@ var login = function login(email, password) {
   });
 };
 var getUser = function getUser() {
-  return axios.get("http://news-server/api/user");
+  return axios.get("/api/user");
 };
 var logout = function logout() {
-  return axios.post("http://news-server/api/logout");
+  return axios.post("/api/logout");
 };
 var refresh = function refresh() {
   var refresh_token = localStorage.getItem("refresh_token");
