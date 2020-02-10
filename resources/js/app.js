@@ -5,11 +5,16 @@ window.Vue = require('vue');
 import App from './components/App.vue';
 import routes from './router/routes';
 import store from './store';
-import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 import VueRouter from 'vue-router';
+import 'vue-loaders/dist/vue-loaders.css';
+import VueLoaders from 'vue-loaders';
+import Toasted from 'vue-toasted';
+import vSelect from 'vue-select';
+Vue.component('v-select', vSelect);
 
-/*Vue Router*/
+Vue.use(VueLoaders);
+Vue.use(Toasted);
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -17,8 +22,6 @@ const router = new VueRouter({
     routes
 });
 Vue.router=router;
-Vue.component('v-select', vSelect);
-
 
 const app = new Vue({
     el: '#app',

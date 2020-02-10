@@ -10,7 +10,7 @@
                     type="text"
                     label="Логин"
                     :value="form.login.value"
-                    :errorType="form.login.error"
+                    :error="form.login.error"
             />
             <BaseInput
                     v-model="form.password.value"
@@ -52,19 +52,34 @@
         methods: {
             async login(e){
                 e.preventDefault();
-                console.log(this.form.login.value, this.form.password.value);
+
                 if(this.validate()){
                     try{
                         await(this.$store.dispatch('LOGIN_REQUEST', {email: this.form.login.value, password: this.form.password.value}));
                         this.$router.push('/home');
                     }catch (e) {
-                        alert('Ошибка...');
+                        this.$toasted.show('Неверный логин или пароль!')
                     }
                 }
             },
 
             validate(){
-                return true;
+                let checker = true;
+
+                this.form.login.error = '';
+                this.form.password.error = '';
+
+                if(!this.form.login.value){
+                    this.form.login.error = 'Введите логин!';
+                    checker = false;
+                }
+
+                if(!this.form.password.value){
+                    this.form.password.error = 'Введите пароль!';
+                    checker = false;
+                }
+
+                return checker;
             },
 
             acceptData(){

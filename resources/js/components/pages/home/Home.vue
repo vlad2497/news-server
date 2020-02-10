@@ -95,7 +95,7 @@
             }
         },
         created() {
-            this.getNews()
+            this.getNews();
         },
         watch: {
             search: function (value) {

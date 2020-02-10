@@ -1,7 +1,7 @@
 <template>
     <div>
         <template v-if="!isAuth && hasToken">
-            <div>загрузка...</div>
+            <div class="loader-wrapper"><vue-loaders-ball-clip-rotate-multiple color="red" scale="2.5"></vue-loaders-ball-clip-rotate-multiple></div>
         </template>
         <template v-else>
             <TheHeading v-if="isAuth"/>
@@ -42,5 +42,11 @@
 </script>
 
 <style scoped>
-
+    .loader-wrapper{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
