@@ -2295,7 +2295,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "TheMain"
+  name: "TheMain",
+  created: function created() {
+    this.authCheck();
+  },
+  methods: {
+    authCheck: function authCheck() {
+      this.$store.getters.USER ? this.$router.push('/home') : this.$router.push('/login');
+    }
+  }
 });
 
 /***/ }),
@@ -39572,7 +39580,7 @@ var render = function() {
   return _c(
     "div",
     [
-      !_vm.isAuth && _vm.hasToken
+      _vm.isLoad
         ? [
             _c(
               "div",
@@ -58026,7 +58034,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
 
 var isAuth = function isAuth(to, from, next) {
-  if (_store__WEBPACK_IMPORTED_MODULE_0__["default"].getters.ACCESS_TOKEN) {
+  if (_store__WEBPACK_IMPORTED_MODULE_0__["default"].getters.USER) {
     next();
     return;
   }
@@ -58034,7 +58042,7 @@ var isAuth = function isAuth(to, from, next) {
   next('/login');
 };
 var isNotAuth = function isNotAuth(to, from, next) {
-  if (!_store__WEBPACK_IMPORTED_MODULE_0__["default"].getters.ACCESS_TOKEN) {
+  if (!_store__WEBPACK_IMPORTED_MODULE_0__["default"].getters.USER) {
     next();
     return;
   }
@@ -58200,6 +58208,8 @@ var actions = {
       commit('SET_USER', response.data);
       commit('SET_LOADER', false);
     })["catch"](function (error) {
+      commit('SET_LOADER', false);
+
       if (error.response.status === 401) {
         if (localStorage.getItem("refresh_token") && Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["checkExpires"])()) {
           dispatch('REFRESH_REQUEST');
@@ -58223,6 +58233,7 @@ var actions = {
         axios.defaults.headers.common["Authorization"] = "".concat(token_type, " ").concat(access_token);
         commit('SET_ACCESS_TOKEN', "".concat(token_type, " ").concat(access_token));
         dispatch('USER_REQUEST');
+        commit('SET_LOADER', true);
         resolve('success');
       })["catch"](function (error) {
         Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["clearLocaleStorageValues"])();

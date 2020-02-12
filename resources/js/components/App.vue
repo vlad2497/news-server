@@ -1,6 +1,6 @@
 <template>
     <div>
-        <template v-if="!isAuth && hasToken">
+        <template v-if="isLoad">
             <div class="loader-wrapper"><vue-loaders-ball-clip-rotate-multiple color="red" scale="2.5"></vue-loaders-ball-clip-rotate-multiple></div>
         </template>
         <template v-else>

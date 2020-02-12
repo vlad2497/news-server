@@ -1,7 +1,7 @@
 import store from "../../store";
 
 export const isAuth = (to, from, next) => {
-    if (store.getters.ACCESS_TOKEN) {
+    if (store.getters.USER) {
         next();
         return
     }
@@ -9,7 +9,7 @@ export const isAuth = (to, from, next) => {
 }
 
 export const isNotAuth = (to, from, next) => {
-    if (!store.getters.ACCESS_TOKEN) {
+    if (!store.getters.USER) {
         next();
         return
     }

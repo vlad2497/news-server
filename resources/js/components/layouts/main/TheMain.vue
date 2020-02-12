@@ -4,7 +4,15 @@
 
 <script>
     export default {
-        name: "TheMain"
+        name: "TheMain",
+        created(){
+            this.authCheck();
+        },
+        methods: {
+            authCheck(){
+                this.$store.getters.USER ? this.$router.push('/home') : this.$router.push('/login');
+            }
+        }
     }
 </script>
 

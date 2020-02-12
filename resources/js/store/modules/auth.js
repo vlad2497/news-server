@@ -21,6 +21,7 @@ const actions = {
                 commit('SET_LOADER', false);
             })
             .catch(error => {
+                commit('SET_LOADER', false);
                 if (error.response.status === 401){
                     if (localStorage.getItem("refresh_token") && checkExpires()) {
                         dispatch('REFRESH_REQUEST');
@@ -41,6 +42,7 @@ const actions = {
 
                     commit('SET_ACCESS_TOKEN', `${token_type} ${access_token}`);
                     dispatch('USER_REQUEST');
+                    commit('SET_LOADER', true);
                     resolve('success');
                 })
                 .catch(error => {
